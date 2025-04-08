@@ -46,7 +46,6 @@ class EmployerController extends Controller
             'pswd' => 'required|string|min:5|max:35',
         ]);
         $user = Employer::where('email', $request->email)->first();
-        dd($user);
         if (!$user) {
             return redirect()->back()->withErrors(['email' => 'Email not found!']);
         }
@@ -57,11 +56,15 @@ class EmployerController extends Controller
         return redirect()->route('employer.dashboard')->with('success','Welcome '.$user->name.'!');
     }
 
+    public function update(Request $request) {
+
+    }
+
     //Logout method
     public function logout(Request $request) {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->rotue('employer.login');
+        return redirect()->route('employer.login');
     }
 }
