@@ -34,12 +34,12 @@
     <!-- End success and error messages -->
 
     <div class="container  position-relative  overflow-hidden" style="margin-top:12rem;">
-        <form class="custom-form" method="post" action="#">
+        <form class="custom-form" method="post" action="{{ route('employer.login.post') }}">
             @csrf
             <div class="card p-5">            <div class="mb-3">
-                <label for="userName" class="form-label">Email</label>
-                <input type="text" name="userName" class="form-control" value="{{ old('userName') }}" aria-describedby="userNameHelp">
-                @error('userName')
+                <label for="email" class="form-label">Email</label>
+                <input type="text" name="email" class="form-control" value="{{ old('email') }}" aria-describedby="userNameHelp">
+                @error('email')
                 <span class="alert text-danger">{{ $message }}</span>
                 @enderror
             </div>

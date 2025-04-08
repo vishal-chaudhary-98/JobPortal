@@ -34,7 +34,7 @@
     <!-- End success and error messages -->
 
     <div class="container  position-relative  overflow-hidden" style="margin-top:12rem;">
-        <form class="custom-form" method="post" action="#">
+        <form class="custom-form" method="post" action="{{ route('employer.registration') }}">
             @csrf
             <div class="card p-5">
             <div class="row">
@@ -88,22 +88,22 @@
             </div>
 
             <div class="col-md-12 mb-3">
-                <label for="description" class="form-label">Company Description</label>
+                <label for="companyDescription" class="form-label">Company Description</label>
                 <textarea name="companyDescription" class="form-control" value="{{ old('companyDescription') }}" ></textarea>
-                @error('description')
+                @error('companyDescription')
                 <span class="alert text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="row">
             <div class="col-md-6 mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <label for="pswd" class="form-label">Password</label>
                 <input type="password" name="pswd" class="form-control" id="exampleInputPassword1">
                 @error('pswd')
                 <span class="alert text-danger">{{ $message }} </span>
                 @enderror
             </div>
             <div class="col-md-6 mb-3">
-                <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                <label for="cpswd" class="form-label">Confirm Password</label>
                 <input type="password" name="cpswd" class="form-control" id="exampleInputPassword1">
                 @error('cpswd')
                 <span class="alert text-danger">{{ $message }} </span>

@@ -34,9 +34,10 @@
     <!-- End success and error messages -->
 
     <div class="container  position-relative  overflow-hidden" style="margin-top:12rem;">
-        <form class="custom-form" method="post" action="#">
+        <form class="custom-form" method="post" action="{{ route('employee.login.post') }}">
             @csrf
-            <div class="card p-5">            <div class="mb-3">
+            <div class="card p-5">
+                <div class="mb-3">
                 <label for="userName" class="form-label">Email</label>
                 <input type="email" name="email" class="form-control" value="{{ old('email') }}" aria-describedby="emailHelp">
                 @error('email')

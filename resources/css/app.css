@@ -44,3 +44,12 @@ a {
   .success-error {
     z-index: 90;
   }
+
+  .alert-success {
+    left: 42%;
+    z-index: 10;
+  }
+.alert-danger {
+    left: 42%;
+    z-index: 10;
+}
