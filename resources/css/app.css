@@ -53,3 +53,16 @@ a {
     left: 42%;
     z-index: 10;
 }
+
+.flash-message {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.flash-message.fade-in {
+  opacity: 1;
+}
+
+.flash-message.fade-out {
+  opacity: 0;
+}
