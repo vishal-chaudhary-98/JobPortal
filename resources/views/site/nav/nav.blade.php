@@ -49,9 +49,6 @@
             @endguest
             @auth
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Dashboard</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <!-- User profile picture (circle) -->
@@ -60,8 +57,6 @@
                         @else
                         <img src="{{ asset('uploads/1.jpg') }}" class="rounded-circle" alt="Default Profile Picture" width="40" height="40">
                         @endif
-
-
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
