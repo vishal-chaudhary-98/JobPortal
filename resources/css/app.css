@@ -1,0 +1,46 @@
+
+a {
+    text-decoration: none;
+}
+.custom-form {
+    width: 40%;
+    margin: auto;
+}
+
+#dashboard {
+    margin: 40px 0px 0px 0px;
+    text-align: center;
+}
+
+.edit-profile-form {
+    width: 500px;
+    margin: auto;
+}
+
+.admin-btn {
+    text-decoration: none;
+    margin-right: 10px;
+}
+/* unvisited link */
+.admin-btn:link {
+    color: red;
+  }
+
+  /* visited link */
+.admin-btn:visited {
+    color: green;
+  }
+
+  /* mouse over link */
+.admin-btn:hover {
+    color: hotpink;
+  }
+
+  /* selected link */
+.admin-btn:active {
+    color: blue;
+  }
+
+  .success-error {
+    z-index: 90;
+  }
