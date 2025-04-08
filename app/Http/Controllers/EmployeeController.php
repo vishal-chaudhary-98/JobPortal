@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Hash;
 class EmployeeController extends Controller
 {
     //Registration function
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|min:4|max:15',
             'dob' => 'required|date',
@@ -25,7 +26,7 @@ class EmployeeController extends Controller
         $imageName = null;
         if ($request->hasFile('profile')) {
             $image = $request->file('profile');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('uploads/profiles'), $imageName);
         }
         $employee = new Employee();
@@ -40,23 +41,33 @@ class EmployeeController extends Controller
         if (!$employee->save()) {
             return redirect()->back()->withErrors(['error' => 'Unable to register!']);
         }
-        return redirect()->route('employee.login')->with('success','You have registred sucessfully!');
+        return redirect()->route('employee.login')->with('success', 'You have registred sucessfully!');
     }
-
-    public function login(Request $request) {
+    //Login function
+    public function login(Request $request)
+    {
         $request->validate([
             'email' => 'required|string|min:5|max:35',
             'pswd' => 'required|string|min:5|max:35',
         ]);
         $user = Employee::where('email', $request->email)->first();
         if (!$user) {
-            return redirect()->route('employee.login')->withErrors(['error' => 'Email not found']);
+            return redirect()->route('employee.login')->withErrors(['email' => 'Email not found']);
         }
-        if (!Hash::check($request->pswd , $user->password)) {
+        if (!Hash::check($request->pswd, $user->password)) {
 
-            return redirect()->route('employee.login')->withErrors(['error' => 'Password not match!']);
+            return redirect()->route('employee.login')->withErrors(['pswd' => 'Password not match!']);
         }
         Auth::login($user);
-        return redirect()->route('employee.dashboard')->with('success','Welcome '. $user->name.'!');
+        return redirect()->route('employee.dashboard')->with('success', 'Welcome ' . $user->name . '!');
+    }
+
+    //Logout function
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('employee.login');
     }
 }

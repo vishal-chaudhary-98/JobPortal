@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Employee dashboard</title>
+    <title>Employer dashboard</title>
     @include('site.header.header')
     @vite ('resources/css/app.css')
 </head>
