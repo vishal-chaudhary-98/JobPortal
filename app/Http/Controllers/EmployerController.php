@@ -52,7 +52,7 @@ class EmployerController extends Controller
         if (!Hash::check($request->pswd, $user->password)) {
             return redirect()->back()->withErrors(['pswd' => 'Passowrd not match!']);
         }
-        Auth::login($user);
+        Auth::guard('employer')->login($user);
         return redirect()->route('employer.dashboard')->with('success','Welcome '.$user->name.'!');
     }
 
@@ -62,7 +62,7 @@ class EmployerController extends Controller
 
     //Logout method
     public function logout(Request $request) {
-        Auth::logout();
+        Auth::guard('employer')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('employer.login');
