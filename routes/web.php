@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\JobController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,3 +23,5 @@ Route::post('/employer/register/post/data',[EmployerController::class,'index'])-
 Route::post('/employer/login/post/data',[EmployerController::class,'login'])->name('employer.login.post');
 Route::view('/employer/dashboard','employer.auth.dashboard')->name('employer.dashboard')->middleware('auth:employer');
 Route::post('/employer/logout',[EmployerController::class,'logout'])->name('logout');
+Route::view('/employer/post/new/job','employer.auth.post_job')->name('employer.post.job')->middleware('auth:employer');
+Route::post('/employer/check/authentication/job/post',[JobController::class,'store'])->name('job.store.post')->middleware('auth:employer');

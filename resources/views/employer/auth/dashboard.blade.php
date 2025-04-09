@@ -13,7 +13,7 @@
 <body>
     <!-- @ include('nav.nav') -->
     @include('site.nav.nav')
-
+    @include('employer.auth.layout.left_nav')
     <!-- Defining success and error messages -->
     <!-- Success and Error Flash Messages -->
 <div class="success-error mt-3 position-relative text-center d-flex">
