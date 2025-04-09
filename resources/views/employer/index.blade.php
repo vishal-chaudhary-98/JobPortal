@@ -15,22 +15,19 @@
     @include('site.nav.nav')
 
     <!-- Defining success and error messages -->
-    <div class="success-error">
-        @if (session('success'))
-        <span class="alert alert-success">
-            {{ session('success') }}
-        </span>
-        @elseif($errors->any())
-        <!-- <ul> -->
-            @foreach($errors->all() as $error)
-            <!-- <li class="alert alert-danger"> -->
-
-               <p class="text-danger"> {{ $error }}</p>
-            <!-- </li> -->
-            @endforeach
-        <!-- </ul> -->
-        @endif
+    <div class="success-error mt-3 position-relative text-center d-flex">
+    @if (session('success'))
+    <div class="alert alert-success flash-message">
+        {{ session('success') }}
     </div>
+    @elseif($errors->any())
+        @foreach($errors->all() as $error)
+        <div class="alert alert-danger flash-message">
+            {{ $error }}
+        </div>
+        @endforeach
+    @endif
+</div>
     <!-- End success and error messages -->
 
     <div class="container  position-relative  overflow-hidden" style="margin-top:12rem;">
@@ -62,6 +59,7 @@
 
         </form>
     </div>
+    @vite(['resources/js/flashMessages'])
 </body>
 
 </html>

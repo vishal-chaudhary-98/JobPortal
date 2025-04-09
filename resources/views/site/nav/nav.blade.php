@@ -83,6 +83,7 @@
                             <p class="text-center">{{ Auth::guard('employer')->user()->name }}</p>
                         </li>
                         <li><a class="dropdown-item" href="#">Edit personal details</a></li>
+                        <li><a class="dropdown-item" href="{{ route('employer.post.job') }}">Post new job</a></li>
                         <li><a class="dropdown-item" href="#">Edit password</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
