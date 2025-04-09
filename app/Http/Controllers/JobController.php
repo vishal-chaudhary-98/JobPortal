@@ -21,10 +21,21 @@ class JobController extends Controller
         'type' => 'required|string|max:50',
     ]);
     $post = new Job();
+    $post->title = $request->title;
+    $post->location = $request->location;
+    $post->description = $request->description;
+    $post->salary = $request->salary;
+    $post->type = $request->type;
     $post->employer_id = $employer->id;
+    $post->created_at = now();
     $post->save();
 
     return redirect()->back()->with('success', 'Job posted successfully!');
-
 }
+
+    public function showJobs(Request $request) {
+        $jobs = Job::where('employer_id', auth('employer')->id())->latest()->get();
+        return view('employer.auth.dashboard', compact('jobs'));
+        
+    }
 }

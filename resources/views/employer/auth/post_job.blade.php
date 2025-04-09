@@ -8,11 +8,6 @@
     <title>Post a job</title>
     @include('site.header.header')
     @vite ('resources/css/app.css')
-    <style>
-        .page-title {
-            top: 90px;
-        }
-    </style>
 </head>
 
 <body>
@@ -38,10 +33,9 @@
         @endif
     </div>
     <!-- End success and error messages -->
-    <div class="page-title text-center position-relative">
-        <h3>Post a job</h3>
-    </div>
-    <div class="container  position-relative  overflow-hidden" style="margin-top:12rem;">
+    <div class="container below-nav-content">
+        <h2 class=" text-center">Post a job</h2>
+    <div class="container  position-relative  overflow-hidden" style="margin-top:2rem;">
         <form class="custom-form" method="post" action="{{ route('job.store.post') }}">
             @csrf
             <div class="card p-5">
@@ -92,6 +86,7 @@
                 </div>
             </div>
         </form>
+    </div>
     </div>
 </body>
 
