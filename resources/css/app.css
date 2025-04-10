@@ -154,10 +154,26 @@ body {
   border-right: 1px solid #ddd;
   padding-top: 1rem;
 }
-    
+
 .left-sidebar .nav-item {
   border-bottom: 2px solid #ddd;
 }
+
+/* Custom right sidebar */
+.right-sidebar {
+    top: 90px;
+    /* Height of the Bootstrap navbar */
+    bottom: 60px;
+      /* Height of the footer */
+    width: 400px;
+    background-color: #f8f9fa;
+    border-left: 1px solid #ddd;
+    padding-top: 1rem;
+  }
+
+  .right-sidebar .nav-item {
+    border-bottom: 2px solid #ddd;
+  }
 
 .nav-link.active {
   font-weight: bold;

@@ -10,44 +10,37 @@
     @vite ('resources/css/app.css')
 </head>
 
-<body  class="dark-mode">
+<body class="dark-mode">
     <!-- @ include('nav.nav') -->
     @include('site.nav.nav')
-    @include('employer.auth.layout.left_nav')
-    <!-- Defining success and error messages -->
-    <!-- Success and Error Flash Messages -->
-<div class="success-error mt-3 position-relative text-center d-flex">
-    @if (session('success'))
-    <div class="alert alert-success flash-message">
-        {{ session('success') }}
-    </div>
-    @elseif($errors->any())
-        @foreach($errors->all() as $error)
-        <div class="alert alert-danger flash-message">
-            {{ $error }}
+    <div class="row mt-5">
+        <div class="col-md-2">
+            @include('employer.auth.layout.areas.left_nav')
         </div>
-        @endforeach
-    @endif
-</div>
-<div class="container below-nav-content">
-    <h2 class="text-center">Dashboard</h2>
-<div class="content-area d-flex">
-  @foreach($jobs as $job)
-<div class="card" style="width: 18rem;margin-right:20px;">
-  <div class="card-body">
-    <h5 class="card-title">{{ $job->title }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{ $job->location }}</h6>
-    <p class="card-text">{{ $job->description }}</p>
-    <a href="#" class="card-link">{{ $job->type }}</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-  @endforeach
-
-</div>
-</div>
-    <!-- End success and error messages -->
-@vite(['resources/js/flashMessages'])
+        <!-- Defining success and error messages -->
+        <div class="col-md-8">
+            <!-- Success and Error Flash Messages -->
+            <div class="success-error mt-3 position-relative text-center d-flex">
+                @if (session('success'))
+                <div class="alert alert-success flash-message">
+                    {{ session('success') }}
+                </div>
+                @elseif($errors->any())
+                @foreach($errors->all() as $error)
+                <div class="alert alert-danger flash-message">
+                    {{ $error }}
+                </div>
+                @endforeach
+                @endif
+            </div>
+            <!-- End success and error messages -->
+            @yield('main')
+        </div>
+        <div class="col-md-2">
+            @include('employer.auth.layout.areas.right_nav')
+        </div>
+    </div>
+    @vite(['resources/js/flashMessages'])
 </body>
 
 </html>
