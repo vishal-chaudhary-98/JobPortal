@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employer;
+use App\Models\JobType;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -56,6 +57,14 @@ class EmployerController extends Controller
         Auth::guard('employer')->login($user);
         return redirect()->route('employer.dashboard')->with('success','Welcome '.$user->name.'!');
         }
+    }
+
+    public function JobType(Request $request) {
+        if (!Auth::guard('employer')) {
+            return redirect()->route('employer.login');   
+        }
+        $jobTypes = JobType::all();
+        return view('employer.auth.layout.sections.post_job', compact('jobTypes'));
     }
 
     public function update(Request $request) {

@@ -13,7 +13,11 @@
 <body>
     <!-- @ include('nav.nav') -->
     @include('site.nav.nav')
-
+    <div class="row">
+        <div class="col-md-2 mt-3">
+            @include('employee.auth.layout.areas.left_nav')
+        </div>
+        <div class="col-md-6 mt-3">
     <!-- Defining success and error messages -->
     <div class="success-error">
         @if (session('success'))
@@ -32,7 +36,9 @@
         @endif
     </div>
     <!-- End success and error messages -->
-
+    @yield('employee')
+        </div>
+    </div>
 </body>
 
 </html>
