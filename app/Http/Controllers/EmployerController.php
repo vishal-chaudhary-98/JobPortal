@@ -41,6 +41,7 @@ class EmployerController extends Controller
 
     //Login method
     public function login(Request $request) {
+        if(!Auth::guard('employer')->check()) {
         $request->validate([
             'email' => 'required|string|min:5|max:35',
             'pswd' => 'required|string|min:5|max:35',
@@ -54,6 +55,7 @@ class EmployerController extends Controller
         }
         Auth::guard('employer')->login($user);
         return redirect()->route('employer.dashboard')->with('success','Welcome '.$user->name.'!');
+        }
     }
 
     public function update(Request $request) {

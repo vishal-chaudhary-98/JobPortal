@@ -1,47 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Post a job</title>
-    @include('site.header.header')
-    @vite ('resources/css/app.css')
-    <style>
-        .page-title {
-            top: 90px;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- @ include('nav.nav') -->
-    @include('site.nav.nav')
-    @include('employer.auth.layout.left_nav')
-
-    <!-- Defining success and error messages -->
-    <div class="success-error">
-        @if (session('success'))
-        <span class="alert alert-success">
-            {{ session('success') }}
-        </span>
-        @elseif($errors->any())
-        <!-- <ul> -->
-        @foreach($errors->all() as $error)
-        <!-- <li class="alert alert-danger"> -->
-
-        <p class="text-danger"> {{ $error }}</p>
-        <!-- </li> -->
-        @endforeach
-        <!-- </ul> -->
-        @endif
-    </div>
-    <!-- End success and error messages -->
-    <div class="page-title text-center position-relative">
-        <h3>Post a job</h3>
-    </div>
-    <div class="container  position-relative  overflow-hidden" style="margin-top:12rem;">
+@extends('employer.auth.dashboard')
+@section('main')
+<div class="container below-nav-content">
+    <h2 class=" text-center">Post a job</h2>
+    <div class="container  position-relative  overflow-hidden" style="margin-top:2rem;">
         <form class="custom-form" method="post" action="{{ route('job.store.post') }}">
             @csrf
             <div class="card p-5">
@@ -93,6 +54,5 @@
             </div>
         </form>
     </div>
-</body>
-
-</html>
+</div>
+@endsection

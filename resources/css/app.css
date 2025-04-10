@@ -66,3 +66,117 @@ a {
 .flash-message.fade-out {
   opacity: 0;
 }
+
+.site-nav {
+  box-shadow: 0 4px 6px #c8dbf7;
+  z-index: 100;
+}
+.below-nav-content {
+  margin-top: 5%;
+}
+
+/*==*==*==*==*==*==*==*==*==*==*==*/
+/*==     theme color change     ==*/
+/*==*==*==*==*==*==*==*==*==*==*==*/
+
+/* Custom light theme */
+.custom-light {
+  background-color: #f8f9fa;
+  /* Light gray background */
+  color: #212529;
+  /* Bootstrap text-dark */
+}
+
+/* Custom dark theme */
+.custom-dark {
+  background-color: #212529;
+  /* Dark background */
+  color: #f8f9fa;
+  /* Light text */
+}
+
+/* Optional: transition effect when switching themes */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.theme-switch{
+  margin-top: 5%;
+}
+
+
+/* Light Mode Styling (default) */
+.light-mode .my-section {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+.light-mode .my-card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #121212;
+}
+
+.light-mode .my-alert {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+/* Dark Mode Styling */
+.dark-mode .my-section {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+.dark-mode .my-card {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  color: #dee2e6;
+}
+
+.dark-mode .my-alert {
+  background-color: #333;
+  color: #f8d7da;
+}
+/*==*==*==*==*==*==*==*==*==*==*==*/
+/*==   end theme color change   ==*/
+/*==*==*==*==*==*==*==*==*==*==*==*/
+
+
+/* Custom left sidebar */
+.left-sidebar {
+  top: 90px;
+  /* Height of the Bootstrap navbar */
+  bottom: 60px;
+    /* Height of the footer */
+  width: 200px;
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+.left-sidebar .nav-item {
+  border-bottom: 2px solid #ddd;
+}
+
+/* Custom right sidebar */
+.right-sidebar {
+    top: 90px;
+    /* Height of the Bootstrap navbar */
+    bottom: 60px;
+      /* Height of the footer */
+    width: 400px;
+    background-color: #f8f9fa;
+    border-left: 1px solid #ddd;
+    padding-top: 1rem;
+  }
+
+  .right-sidebar .nav-item {
+    border-bottom: 2px solid #ddd;
+  }
+
+.nav-link.active {
+  font-weight: bold;
+   background-color: #e9f5ff;
+  border-left: 4px solid #0d6efd;
+}

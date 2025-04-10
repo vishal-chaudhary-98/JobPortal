@@ -1,8 +1,8 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" style="z-index:0;">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top site-nav">
     <div class="container-fluid">
         <!-- Navbar brand -->
-        <a class="navbar-brand" target="_blank" href="#">
+        <a class="navbar-brand"  href="#">
             <img src="https://www.logolounge.com/wp-content/uploads/2023/12/5_452189-300x300.png" height="66" alt="logo"
                 loading="lazy" style="margin-top: -3px;" />
         </a>
@@ -17,10 +17,13 @@
                     <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" rel="nofollow" target="_blank">Our Services</a>
+                    <a class="nav-link" href="#" rel="nofollow" >Our Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" target="_blank">About Us</a>
+                    <a class="nav-link" href="#" >About Us</a>
+                </li>
+                <li class="nav-item">
+                    <!-- <a class="nav-link" href="{ { route('test') }}" >Test</a> -->
                 </li>
             </ul>
 

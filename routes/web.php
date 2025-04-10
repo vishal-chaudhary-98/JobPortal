@@ -21,7 +21,10 @@ Route::view('/employer/login','employer.index')->name('employer.login');
 Route::view('/employer/registration','employer.registration')->name('employer.register');
 Route::post('/employer/register/post/data',[EmployerController::class,'index'])->name('employer.registration');
 Route::post('/employer/login/post/data',[EmployerController::class,'login'])->name('employer.login.post');
-Route::view('/employer/dashboard','employer.auth.dashboard')->name('employer.dashboard')->middleware('auth:employer');
+Route::get('/employer/dashboard',[JobController::class,'showJobs'])->name('employer.dashboard')->middleware('auth:employer');
 Route::post('/employer/logout',[EmployerController::class,'logout'])->name('logout');
 Route::view('/employer/post/new/job','employer.auth.post_job')->name('employer.post.job')->middleware('auth:employer');
 Route::post('/employer/check/authentication/job/post',[JobController::class,'store'])->name('job.store.post')->middleware('auth:employer');
+
+
+Route::view('/test','test')->name('test');
