@@ -58,11 +58,11 @@
                         <li>
                             <p class="text-center">{{ Auth::guard('web')->user()->name }}</p>
                         </li>
-                        <li><a class="dropdown-item" href="#">Edit personal details</a></li>
-                        <li><a class="dropdown-item" href="#">Edit password</a></li>
+                        <li><a class="dropdown-item" href="{{ route('employee.dashboard') }}">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="#">View Jobs</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
-                            <form action="{{ route('logout') }}" method="post">
+                            <form action="{{ route('employee.logout') }}" method="post">
                                 @csrf
                                 <button class="dropdown-item">Logout</button>
                             </form>
