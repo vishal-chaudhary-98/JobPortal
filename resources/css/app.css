@@ -41,8 +41,12 @@ a {
     color: blue;
   }
 
-  .success-error {
-    z-index: 90;
+  .success-error .alert-success{
+    z-index: 1000;
+  }
+
+  .success-error .text-danger{
+    z-index: 1000;
   }
 
   .alert-success {

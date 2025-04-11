@@ -59,7 +59,7 @@ class EmployeeController extends Controller
             return redirect()->route('employee.login')->withErrors(['pswd' => 'Password not match!']);
         }
         Auth::guard('web')->login($user);
-        return redirect()->route('employee.dashboard')->with('success', 'Welcome ' . $user->name . '!');
+        return redirect()->route('employee.job.list')->with('success', 'Welcome ' . $user->name . '!');
     }
 
     //Logout function
