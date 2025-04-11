@@ -18,12 +18,11 @@
                         <label for="job_type" class="form-label">Job Type</label>
                         <select name="job_type" id="job_type" class="form-select">
                             <option value="">Select a job type</option>
-                        @foreach($jobType as $type)
-                            <option value="{{ $type->job_type }}"
-                                {{ old('job_type', $field->job_type) == $type->job_type ? 'selected' : '' }}>
-                                {{ $type->job_type }}
+                            @foreach($jobType as $jobType)
+                            <option value="{{ $jobType->job_type }}" {{ old('job_type') == $jobType->job_type ? 'selected' : '' }}>
+                                {{ $jobType->job_type }}
                             </option>
-                        @endforeach
+                            @endforeach
                         </select>
                         @error('job_type')
                         <span class="alert text-danger">{{ $message }}</span>

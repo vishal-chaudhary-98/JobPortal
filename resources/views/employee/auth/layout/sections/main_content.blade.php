@@ -2,9 +2,9 @@
 @section('employee')
 <div class="below-nav-content">
     <h2 class="text-center">Dashboard for employees</h2>
-    <div class="content-area d-flex">
+    <div class="content-area d-flex flex-column-reverse ">
         @foreach($jobs as $job)
-        <div class="card" style="margin-right:20px;">
+        <div class="card" style="margin:0px 20px 15px 0px;">
             <div class="card-body">
                 <h5 class="card-title">{{ $job->title }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ $job->location }}</h6>
@@ -15,6 +15,6 @@
             </div>
         </div>
         @endforeach
-    </div> 
+    </div>
  </div>
 @endsection
