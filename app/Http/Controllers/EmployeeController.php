@@ -46,6 +46,7 @@ class EmployeeController extends Controller
     //Login function
     public function login(Request $request)
     {
+        if(!Auth::guard('employer')->check()) {
         $request->validate([
             'email' => 'required|string|min:5|max:35',
             'pswd' => 'required|string|min:5|max:35',
@@ -59,8 +60,59 @@ class EmployeeController extends Controller
             return redirect()->route('employee.login')->withErrors(['pswd' => 'Password not match!']);
         }
         Auth::guard('web')->login($user);
-        return redirect()->route('employee.job.list')->with('success', 'Welcome ' . $user->name . '!');
+        return redirect()->route('employee.dashboard')->with('success', 'Welcome ' . $user->name . '!');
+        }
     }
+
+    public function showUpdateForm() {
+        $employee = Employee::find(auth()->id());
+        if(!$employee) {
+            return redirect()->back()->withErrors(['error' => 'User not found!']);
+        }
+        return view('employee.auth.layout.sections.updateProfile', compact('employee'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'nullable|string|min:4|max:15',
+            'dob' => 'nullable|date',
+            'gender' => 'nullable|string|in:Male,Female,Other',
+            'nationality' => 'nullable|string|max:20',
+            'email' => 'nullable|email|min:10|max:35|unique:employees,email,' . auth()->id(),
+            'contact' => 'nullable|digits_between:10,12',
+            'profile' => 'nullable|image|mimes:png,jpg,jpeg,gif|max:2048',
+        ]);
+
+        $employee = Employee::find(auth()->id());
+        if (!$employee) {
+            return redirect()->back()->withErrors(['error' => 'Employee not found!']);
+        }
+
+        if ($request->hasFile('profile')) {
+            $image = $request->file('profile');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads/profiles'), $filename);
+
+            if ($employee->profile && file_exists(public_path('uploads/profiles/' . $employee->profile))) {
+                unlink(public_path('uploads/profiles/' . $employee->profile));
+            }
+
+            $employee->profile = $filename;
+        }
+
+        $employee->name = $request->name ?? $employee->name;
+        $employee->dob = $request->dob ?? $employee->dob;
+        $employee->gender = $request->gender ?? $employee->gender;
+        $employee->nationality = $request->nationality ?? $employee->nationality;
+        $employee->email = $request->email ?? $employee->email;
+        $employee->contact = $request->contact ?? $employee->contact;
+
+        $employee->save();
+
+        return redirect()->route('employee.dashboard')->with('success', 'Details updated successfully!');
+    }
+
 
     //Logout function
     public function logout(Request $request)

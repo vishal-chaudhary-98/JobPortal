@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\PersonalDetailsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,13 +14,16 @@ Route::view('/employee/login','employee.index')->name('employee.login');
 Route::view('/employee/registration','employee.registration')->name('employee.register');
 Route::post('/employee/register/post/data',[EmployeeController::class,'index'])->name('employee.registeration');
 Route::post('/employee/login/post/data',[EmployeeController::class,'login'])->name('employee.login.post');
-Route::view('/employee/dashboard','employee.auth.dashboard')->name('employee.dashboard')->middleware('auth:web');
 Route::post('employee/logout',[EmployeeController::class,'logout'])->name('employee.logout');
 Route::view('/employee/main/content','employee.auth.layout.sections.main_content')->name('employee.main')->middleware('auth:web');
-Route::view('/employee/test/content','test')->name('employee.test')->middleware('auth:web');
-Route::get('/employee/listing/jobs',[JobController::class,'jobForEmployee'])->name('employee.job.list')->middleware('auth:web');
+Route::get('/employee/dashboard',[JobController::class,'jobForEmployee'])->name('employee.dashboard')->middleware('auth:web');
+Route::view('/employee/add/personal/details','employee.auth.layout.sections.personal_details')->name('employee.personal.info')->middleware('auth:web');
+Route::get('/employee/update/profile/details',[EmployeeController::class, 'showUpdateForm'])->name('employee.usdate.profile.details')->middleware('auth:web');
+Route::post('/employee/update/profile',[EmployeeController::class, 'updateProfile'])->name('employee.update.profile')->middleware('auth:web');
 
 
+//------------------------------------------------------------------------------
+Route::post('/employee/professional/detail/form',[PersonalDetailsController::class,'index'])->name('employee.profesional.details')->middleware('auth:web');
 
 
 
@@ -42,4 +46,5 @@ Route::post('/employer/update/post/{id}',[JobController::class,'update'])->name(
 
 
 //----------------------------------------------------------------------------
-Route::view('/test','test')->name('test');
+Route::view('/test','test')->name('test')->middleware('auth:web');
+Route::view('/test','test')->name('test')->middleware('auth:employer');

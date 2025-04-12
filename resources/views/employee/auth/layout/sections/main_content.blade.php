@@ -2,19 +2,23 @@
 @section('employee')
 <div class="below-nav-content">
     <h2 class="text-center">Dashboard for employees</h2>
-    <div class="content-area d-flex flex-column-reverse ">
+    <div class="container employee-job-listing">
         @foreach($jobs as $job)
-        <div class="card" style="margin:0px 20px 15px 0px;">
-            <div class="card-body">
-                <h5 class="card-title">{{ $job->title }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{ $job->location }}</h6>
-                <p class="card-text">{{ $job->description }}</p>
-                <p class="card-text"><strong>{{ $job->salary }}</strong></p>
-                <a href="#" class="card-link">{{ $job->type }}</a>
-                <a href="#" class="card-link">View full job</a>
+        <div class="job-listing border-bottom py-3 d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start flex-wrap">
+                <div class="job-info">
+                    <h5 class="mb-1">{{ $job->title }}</h5>
+                    <h6 class="text-muted mb-2">{{ $job->location }}</h6>
+                    <p class="mb-2">{{ Str::limit($job->description, 250) }}</p>
+                    <div>
+                        <span class="badge bg-primary text-white me-2">{{ $job->type }}</span>
+                        <strong class="text-success me-2">{{ $job->salary }}</strong>
+                        <!-- <a href="#" class="text-decoration-none">View full job</a> -->
+                    </div>
+                </div>
             </div>
         </div>
         @endforeach
     </div>
- </div>
+</div>
 @endsection

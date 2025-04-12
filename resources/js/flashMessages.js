@@ -28,3 +28,4 @@ toggleSwitch.addEventListener('change', () => {
         body.classList.add('light-mode');
     }
 });
+

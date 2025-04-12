@@ -23,9 +23,25 @@
                     <a class="nav-link" href="#" >About Us</a>
                 </li>
                 <li class="nav-item">
-                    <!-- <a class="nav-link" href="{ { route('test') }}" >Test</a> -->
+                    <a class="nav-link" href="{{ route('test') }}" >Test</a>
                 </li>
             </ul>
+            
+            <!-- Success and Error Flash Messages -->
+            <div class="success-error">
+                @if (session('success'))
+                <div class="alert alert-success flash-message">
+                    {{ session('success') }}
+                </div>
+                @elseif($errors->any())
+                @foreach($errors->all() as $error)
+                <div class="alert alert-danger flash-message">
+                    {{ $error }}
+                </div>
+                @endforeach
+                @endif
+            </div>
+            <!-- End success and error messages -->
 
             <!-- Guest -->
             @guest
@@ -59,7 +75,7 @@
                             <p class="text-center">{{ Auth::guard('web')->user()->name }}</p>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('employee.dashboard') }}">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="#">View Jobs</a></li>
+                        <li><a class="dropdown-item" href="{{ route('employee.personal.info') }}">Edit personal details</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{{ route('employee.logout') }}" method="post">
