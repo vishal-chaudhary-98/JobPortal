@@ -1,62 +1,67 @@
-
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
+
 .custom-form {
-    width: 40%;
-    margin: auto;
+  width: 40%;
+  margin: auto;
 }
 
 #dashboard {
-    margin: 40px 0px 0px 0px;
-    text-align: center;
+  margin: 40px 0px 0px 0px;
+  text-align: center;
 }
 
 .edit-profile-form {
-    width: 500px;
-    margin: auto;
+  width: 500px;
+  margin: auto;
 }
 
 .admin-btn {
-    text-decoration: none;
-    margin-right: 10px;
+  text-decoration: none;
+  margin-right: 10px;
 }
+
 /* unvisited link */
 .admin-btn:link {
-    color: red;
-  }
+  color: red;
+}
 
-  /* visited link */
+/* visited link */
 .admin-btn:visited {
-    color: green;
-  }
+  color: green;
+}
 
-  /* mouse over link */
+/* mouse over link */
 .admin-btn:hover {
-    color: hotpink;
-  }
+  color: hotpink;
+}
 
-  /* selected link */
+/* selected link */
 .admin-btn:active {
-    color: blue;
-  }
+  color: blue;
+}
 
-  .success-error .alert-success{
-    z-index: 1000;
-  }
+.success-error {
+  margin-right: 44%;
+}
 
-  .success-error .text-danger{
-    z-index: 1000;
-  }
+.success-error .alert-success {
+  z-index: 1000;
+}
 
-  .alert-success {
+.success-error .text-danger {
+  z-index: 1000;
+}
+
+/* .alert-success {
     left: 42%;
     z-index: 10;
   }
 .alert-danger {
     left: 42%;
     z-index: 10;
-}
+} */
 
 .flash-message {
   opacity: 0;
@@ -75,6 +80,7 @@ a {
   box-shadow: 0 4px 6px #c8dbf7;
   z-index: 100;
 }
+
 .below-nav-content {
   margin-top: 5%;
 }
@@ -104,7 +110,7 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-.theme-switch{
+.theme-switch {
   margin-top: 5%;
 }
 
@@ -142,6 +148,7 @@ body {
   background-color: #333;
   color: #f8d7da;
 }
+
 /*==*==*==*==*==*==*==*==*==*==*==*/
 /*==   end theme color change   ==*/
 /*==*==*==*==*==*==*==*==*==*==*==*/
@@ -152,8 +159,8 @@ body {
   top: 90px;
   /* Height of the Bootstrap navbar */
   bottom: 60px;
-    /* Height of the footer */
-  width: 200px;
+  /* Height of the footer */
+  width: 14%;
   background-color: #f8f9fa;
   border-right: 1px solid #ddd;
   padding-top: 1rem;
@@ -165,22 +172,56 @@ body {
 
 /* Custom right sidebar */
 .right-sidebar {
-    top: 90px;
-    /* Height of the Bootstrap navbar */
-    bottom: 60px;
-      /* Height of the footer */
-    width: 400px;
-    background-color: #f8f9fa;
-    border-left: 1px solid #ddd;
-    padding-top: 1rem;
-  }
+  top: 90px;
+  /* Height of the Bootstrap navbar */
+  bottom: 60px;
+  /* Height of the footer */
+  width: 400px;
+  background-color: #f8f9fa;
+  border-left: 1px solid #ddd;
+  padding-top: 1rem;
+}
 
-  .right-sidebar .nav-item {
-    border-bottom: 2px solid #ddd;
-  }
+.right-sidebar .nav-item {
+  border-bottom: 2px solid #ddd;
+}
 
 .nav-link.active {
   font-weight: bold;
-   background-color: #e9f5ff;
+  background-color: #e9f5ff;
   border-left: 4px solid #0d6efd;
+}
+
+
+/*-------------------------employee styling------------------------*/
+
+.employee-container {
+  width: 85%;
+}
+
+.job-listing:hover {
+  background-color: #f9f9f9;
+  border-left: 4px solid #007bff;
+  padding-left: 1rem;
+}
+
+.employee-job-listing {
+  border: 1px solid #cdcdcd;
+  margin-left: 2%;
+}
+
+.employee-personal-details-form {
+  width: 100%;
+}
+
+.accordion-item {
+  border: 1px solid #cdcdcd;
+  border-top: 1px solid #cdcdcd !important;
+}
+
+
+
+.form-label {
+  color: rgb(2, 128, 224);
+  font-weight: 700;
 }

@@ -1,5 +1,5 @@
-@extends('employer.auth.dashboard')
-@section('main')
+@extends('employee.auth.dashboard')
+@section('employee')
 <div class="col-md-8">
     <div class="container py-5">
         <div class="theme-switch d-flex justify-content-between align-items-center">

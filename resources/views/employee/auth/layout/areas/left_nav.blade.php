@@ -3,21 +3,23 @@
     <ul class="nav flex-column">
         <li class="nav-item">
             <a
-                class="nav-link {{ request()->routeIs('employee.job.list') ? 'active text-primary' : 'text-dark' }}"
-                href="{{ route('employee.job.list') }}">
+                class="nav-link {{ request()->routeIs('employee.dashboard') ? 'active text-primary' : 'text-dark' }}"
+                href="{{ route('employee.dashboard') }}">
                 Dashboard
             </a>
         </li>
         <li class="nav-item">
             <a
-                class="nav-link {{ request()->routeIs('employee.test') ? 'active text-primary' : 'text-dark' }}"
-                href="{{ route('employee.test') }}">
-                Test
+                class="nav-link {{ request()->routeIs('employee.personal.info') ? 'active text-primary' : 'text-dark' }}"
+                href="{{ route('employee.personal.info') }}">
+                Edit personal details
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Settings</a>
+            <a class="nav-link {{ request()->routeIs('employee.usdate.profile.details') ? 'active text-primary' : 'text-dark' }}"
+                href="{{ route('employee.usdate.profile.details') }}">
+                Edit profile</a>
         </li>
     </ul>
 </div>
