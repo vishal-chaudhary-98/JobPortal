@@ -17,6 +17,6 @@ class PersonalDetailsController extends Controller
     }
 
     public function index(Request $request) {
-        dd($this->userId);
+        dd($request);
     }
 }

@@ -41,6 +41,9 @@ Route::get('/employer/post/new/job',[EmployerController::class,'JobType'])->name
 Route::post('/employer/check/authentication/job/post',[JobController::class,'store'])->name('job.store.post')->middleware('auth:employer');
 Route::get('/employer/edit/job/post/{id}',[JobController::class,'updateForm'])->name('edit.job.post')->middleware('auth:employer');
 Route::post('/employer/update/post/{id}',[JobController::class,'update'])->name('employer.update.post')->middleware('auth:employer');
+Route::view('/employer/view/full/job/post', 'employer.auth.layout.sections.view_job')->name('employer.view.job')->middleware('auth:employer');
+Route::get('/employer/single/post',[JobController::class,'singleJobPost'])->name('single.job.post')->middleware('auth:employer');
+
 
 
 
