@@ -54,8 +54,8 @@
     <!-- <div id="intro" class="p-5 text-center bg-light">
       <h1 class="mb-3 h2">Hospital Management System</h1>
       <p class="mb-3">Care with Flair, Management Beyond Compare!</p>
-      <a class="btn btn-primary m-2" href="{ { route('login') }}" role="button" rel="nofollow">Patient area</a>
-      <a class="btn btn-primary m-2" href="{ { route('doctor.login') }}"
+      <a class="btn btn-primary m-2" href="login" role="button" rel="nofollow">Patient area</a>
+      <a class="btn btn-primary m-2" href="doctor."
         data-mdb-ripple-init role="button">Doctor area</a>
     </div> -->
     <!-- Jumbotron -->

@@ -24,8 +24,8 @@ Route::post('/employee/update/profile',[EmployeeController::class, 'updateProfil
 
 //------------------------------------------------------------------------------
 Route::post('/employee/professional/detail/form',[PersonalDetailsController::class,'index'])->name('employee.profesional.details')->middleware('auth:web');
-
-
+// Route::post('/employee/test',[PersonalDetailsController::class,'index'])->name('employee.test')->middleware('auth:web');
+Route::view('/employee/view/profile', 'employee.auth.layout.sections.view_profile')->name('employee.view.profile')->middleware('auth:web');
 
 
 

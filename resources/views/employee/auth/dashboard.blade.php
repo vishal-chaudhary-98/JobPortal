@@ -18,7 +18,7 @@
             <div class="col-md-2">
                 @include('employee.auth.layout.areas.left_nav')
             </div>
-            <div class="col-md-6" style="margin:5rem 0px 0px 0px;">
+            <div class="col-md-10" style="margin:4rem 0px 0px 0px;">
                 @yield('employee')
             </div>
         </div>

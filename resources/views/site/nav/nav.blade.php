@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top site-nav">
     <div class="container-fluid">
         <!-- Navbar brand -->
-        <a class="navbar-brand"  href="#">
+        <a class="navbar-brand" href="#">
             <img src="https://www.logolounge.com/wp-content/uploads/2023/12/5_452189-300x300.png" height="66" alt="logo"
                 loading="lazy" style="margin-top: -3px;" />
         </a>
@@ -17,16 +17,16 @@
                     <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" rel="nofollow" >Our Services</a>
+                    <a class="nav-link" href="#" rel="nofollow">Our Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" >About Us</a>
+                    <a class="nav-link" href="#">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('test') }}" >Test</a>
+                    <a class="nav-link" href="{{ route('test') }}">Test</a>
                 </li>
             </ul>
-            
+
             <!-- Success and Error Flash Messages -->
             <div class="success-error">
                 @if (session('success'))
@@ -72,11 +72,15 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
-                            <p class="text-center">{{ Auth::guard('web')->user()->name }}</p>
+                            <a href="{{  route('employee.view.profile') }} ">
+                            <p class=" text-center">{{ Auth::guard('web')->user()->name }}</p>
+                            </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('employee.dashboard') }}">Dashboard</a></li>
                         <li><a class="dropdown-item" href="{{ route('employee.personal.info') }}">Edit personal details</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li>
                             <form action="{{ route('employee.logout') }}" method="post">
                                 @csrf
@@ -104,7 +108,9 @@
                         <li><a class="dropdown-item" href="#">Edit personal details</a></li>
                         <li><a class="dropdown-item" href="{{ route('employer.post.job') }}">Post new job</a></li>
                         <li><a class="dropdown-item" href="#">Edit password</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
