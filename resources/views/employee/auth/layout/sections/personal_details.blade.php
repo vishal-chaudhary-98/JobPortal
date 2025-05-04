@@ -58,16 +58,16 @@
                     <div class="accordion-body">
                       <div class="row">
                         <div class="col-md-6 mb-3">
-                          <label for="linkedin" class="form-label">Degree</label>
-                          <input type="text" name="linkedin" class="form-control" value="{{ old('linkedin') }}">
-                          @error('linkedin')
+                          <label for="degree" class="form-label">Degree</label>
+                          <input type="text" name="education.degree[]" class="form-control" value="{{ old('degree') }}">
+                          @error('degree')
                           <span class="alert text-danger">{{ $message }}</span>
                           @enderror
                         </div>
                         <div class="col-md-6 mb-3">
-                          <label for="github" class="form-label">College/University</label>
-                          <input type="text" name="github" class="form-control" value="{{ old('github') }}">
-                          @error('github')
+                          <label for="clg_univ" class="form-label">College/University</label>
+                          <input type="text" name="education.clg_univ[]" class="form-control" value="{{ old('clg_univ') }}">
+                          @error('clg_univ')
                           <span class="alert text-danger">{{ $message }}</span>
                           @enderror
                         </div>
@@ -75,7 +75,7 @@
                       <div class="row">
                         <div class="col-md-12 mb-3">
                           <label for="year" class="form-label">Year of Passing</label>
-                          <select name="year" class="form-select">
+                          <select name="education.year[]" class="form-select">
                             <option value="">Select Year</option>
                             @for ($year = date('Y'); $year >= 1970; $year--)
                             <option value="{{ $year }}" {{ old('year') == $year ? 'selected' : '' }}>{{ $year }}</option>

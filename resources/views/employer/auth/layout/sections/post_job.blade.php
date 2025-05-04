@@ -39,7 +39,10 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="salary" class="form-label">Salery offered</label>
-                        <input type="number" name="salary" class="form-control" value="{{ old('salary') }}">
+                        <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" name="salary" class="form-control" value="₹, {{ old('salary') }}">
+                        </div>
                         @error('salary')
                         <span class="alert text-danger">{{ $message }}</span>
                         @enderror

@@ -96,4 +96,13 @@ class JobController extends Controller
             ->get();
         return view('employer.auth.dashboard', compact('jobs'));
     }
+
+    //View Single job post
+    public function singleJobPost(Request $request) {
+        $employer = auth('employer')->user();
+        if (!$employer) {
+            abort(403, 'Unauthorezed');
+        }
+        dd ($request);
+    }
 }
