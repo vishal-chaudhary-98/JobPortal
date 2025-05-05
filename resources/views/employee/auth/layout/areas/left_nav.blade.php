@@ -8,13 +8,13 @@
                 Dashboard
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a
-                class="nav-link {{ request()->routeIs('employee.personal.info') ? 'active text-primary' : 'text-dark' }}"
-                href="{{ route('employee.personal.info') }}">
+                class="nav-link { { request()->routeIs('employee.personal.info') ? 'active text-primary' : 'text-dark' }}"
+                href="{ { route('employee.personal.info') }}">
                 Edit personal details
             </a>
-        </li>
+        </li> -->
 
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('employee.usdate.profile.details') ? 'active text-primary' : 'text-dark' }}"

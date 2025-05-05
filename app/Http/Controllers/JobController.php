@@ -103,6 +103,7 @@ class JobController extends Controller
         if (!$employer) {
             abort(403, 'Unauthorezed');
         }
+
         dd ($request);
     }
 }
