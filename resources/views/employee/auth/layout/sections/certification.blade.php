@@ -38,25 +38,30 @@
                 @method('PUT')
 
                 @foreach($certifications as $certification)
-                <div class="mb-3">
-                    <label class="form-label">Course Name</label>
-                    <input type="text" class="form-control" name="certificate[course][]" value="{{ $certification->name }}">
-                </div>
+                <div id="cloneCertification">
+                    <div class="group-item">
 
-                <div class="mb-3">
-                    <label class="form-label">Institute</label>
-                    <input type="text" class="form-control" name="certificate[institute][]" value="{{ $certification->institution }}">
-                </div>
+                        <div class="mb-3">
+                            <label class="form-label">Course Name</label>
+                            <input type="text" class="form-control" name="certificate[course][]" value="{{ $certification->name }}">
+                        </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Certificate Issued Date</label>
-                    <input type="date" class="form-control" name="certificate[certificate_date][]" value="{{ $certification->date_received }}">
+                        <div class="mb-3">
+                            <label class="form-label">Institute</label>
+                            <input type="text" class="form-control" name="certificate[institute][]" value="{{ $certification->institution }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Certificate Issued Date</label>
+                            <input type="date" class="form-control" name="certificate[certificate_date][]" value="{{ $certification->date_received }}">
+                        </div>
+                        <div class="d-flex flex-row-reverse justify-content-between">
+                            <a href="#" title="Delete this Certification"><span class="delete"><i class="fa-solid fa-trash"></i></span></a>
+                            <a href="#" title="Add more Certification" onclick="cloneSection('cloneCertification')"><span class="add-more"><i class="fa-solid fa-plus"></i></span></a>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
-                <div class="d-flex flex-row-reverse justify-content-between">
-                    <a href="#" title="Delete this Certification"><span class="delete"><i class="fa-solid fa-trash"></i></span></a>
-                    <a href="#" title="Add more Certification"><span class="add-more"><i class="fa-solid fa-plus"></i></span></a>
-                </div>
-                <hr>
                 @endforeach
 
                 <button type="submit" class="btn btn-sm btn-primary">Update</button>
@@ -65,3 +70,14 @@
         </div>
     </div>
 </div>
+<!-- @ vite('resources/js/profileEditRemove.js') -->
+<script>
+    function cloneSection(containerId) {
+        const container = document.getElementById(containerId);
+        const firstGroup = container.querySelector('.group-item');
+        const clone = firstGroup.cloneNode(true);
+        // Clear all input, textarea, and select values
+        clone.querySelectorAll('input, textarea, select').forEach(input => input.value = '');
+        container.appendChild(clone);
+    }
+</script>

@@ -32,43 +32,47 @@
                 <form action="{{ route('employee.edit.education') }}" method="POST">
                     @csrf
                     @method('PUT')
-
                     @foreach($educations as $education)
-                    <div class="mb-3">
-                        <label class="form-label">Company Name</label>
-                        <input type="text" class="form-control" name="education[degree][]" value="{{ $education->degree }}">
-                    </div>
+                    <div id="cloneEducation">
+                        <div class="group-item">
 
-                    <div class="mb-3">
-                        <label class="form-label">Designation</label>
-                        <input type="text" class="form-control" name="education[institution][]" value="{{ $education->institution }}">
-                    </div>
+                            <div class="mb-3">
+                                <label class="form-label">Course/Degree</label>
+                                <input type="text" class="form-control" name="education[degree][]" value="{{ $education->degree }}">
+                            </div>
 
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label for="year" class="form-label">Year of Passing</label>
-                                <select name="education[year][]" class="form-select">
-                                    <option value="">Select Year</option>
-                                    @for ($year = date('Y'); $year >= 1970; $year--)
-                                    <option value="{{ $year }}" {{ old('education.year') == $year ? 'selected' : ($education->year == $year ? 'selected' : '') }}>
-                                        {{ $year }}
-                                    </option>
-                                    @endfor
-                                </select>
-                                @error('education.year')
-                                <span class="alert text-danger">{{ $message }}</span>
-                                @enderror
+                            <div class="mb-3">
+                                <label class="form-label">College/University</label>
+                                <input type="text" class="form-control" name="education[institution][]" value="{{ $education->institution }}">
                             </div>
-                            <div class="d-flex flex-row-reverse justify-content-between">
-                                <a href="#" title="Delete this Qualification"><span class="delete"><i class="fa-solid fa-trash"></i></span></a>
-                                <a href="#"  title="Add more Qualifications"><span class="add-more"><i class="fa-solid fa-plus"></i></span></a>
+
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="year" class="form-label">Pass out year</label>
+                                        <select name="education[year][]" class="form-select">
+                                            <option value="">Select Year</option>
+                                            @for ($year = date('Y'); $year >= 1970; $year--)
+                                            <option value="{{ $year }}" {{ old('education.year') == $year ? 'selected' : ($education->year == $year ? 'selected' : '') }}>
+                                                {{ $year }}
+                                            </option>
+                                            @endfor
+                                        </select>
+                                        @error('education.year')
+                                        <span class="alert text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="d-flex flex-row-reverse justify-content-between">
+                                        <a href="#" title="Delete this Qualification"><span class="delete"><i class="fa-solid fa-trash"></i></span></a>
+                                        <a href="#" title="Add more Qualifications" onclick="cloneSection('cloneEducation')"><span class="add-more"><i class="fa-solid fa-plus"></i></span></a>
+                                    </div>
+                                </div>
                             </div>
+                            <hr>
+
                         </div>
                     </div>
-                    <hr>
                     @endforeach
-
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>
                     <button type="button" class="btn btn-sm btn-secondary" @click="edit = false">Cancel</button>
                 </form>
@@ -76,3 +80,14 @@
         </div>
     </div>
 </div>
+<!-- @ vite('resources/js/profileEditRemove.js') -->
+<script>
+    function cloneSection(containerId) {
+        const container = document.getElementById(containerId);
+        const firstGroup = container.querySelector('.group-item');
+        const clone = firstGroup.cloneNode(true);
+        // Clear all input, textarea, and select values
+        clone.querySelectorAll('input, textarea, select').forEach(input => input.value = '');
+        container.appendChild(clone);
+    }
+</script>

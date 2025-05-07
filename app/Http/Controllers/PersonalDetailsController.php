@@ -193,15 +193,20 @@ class PersonalDetailsController extends Controller
 
         foreach($degrees as $index => $degree) {
             $data = [
+                'employee_id' => $employeeId,
                 'degree' => $degree,
                 'institution' => $institute[$index] ?? null,
                 'year' => $year[$index] ?? null,
             ];
             if (isset($educationRecord[$index])) {
+                // If $index found then update it 
                 $educationRecord[$index]->update($data);
+            } else {
+                // Otherwise, create a new one
+                Education::create($data);
             }
         }
-        return redirect()->back()->with('success','Data updated');
+        return redirect()->back()->with('success','Data updated!');
     }
 
     // Update Certification
@@ -215,15 +220,20 @@ class PersonalDetailsController extends Controller
 
         foreach($courses as $index => $course) {
             $data = [
+                'employee_id' => $employeeId,
                 'name' => $course,
                 'institution' => $institute[$index] ?? null,
                 'date_received' => $certificate_date[$index] ?? null,
             ];
             if (isset($certificateRecord[$index])) {
+                // If $index found then update it 
                 $certificateRecord[$index]->update($data);
+            } else {
+                // Otherwise, create a new one
+                Certification::create($data);
             }
         }
-        return redirect()->back()->with('success','Data updated');
+        return redirect()->back()->with('success','Data updated!');
     }
 
     // Update Experience
@@ -238,16 +248,21 @@ class PersonalDetailsController extends Controller
 
         foreach($companys as $index => $company) {
             $data = [
+                'employee_id' => $employeeId,
                 'company_name' => $company,
                 'role' => $role[$index] ?? null,
                 'start_date' => $start_date[$index] ?? null,
                 'end_date' => $end_date[$index] ?? null
             ];
             if (isset($experienceRecord[$index])) {
-                $experienceRecord[$index]->update($data);
+                // If $index found then update it 
+                $experienceRecord[$index]->update($data); 
+            } else {
+                // Otherwise, create a new one
+                Experience::create($data);
             }
         }
-        return redirect()->back()->with('success','Data updated');
+        return redirect()->back()->with('success','Data updated!');
     }
 
     // Update Profile

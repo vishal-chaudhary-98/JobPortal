@@ -39,30 +39,35 @@
                     @method('PUT')
 
                     @foreach($experiences as $experience)
-                    <div class="mb-3">
-                        <label class="form-label">Company Name</label>
-                        <input type="text" class="form-control" name="experience[company][]" value="{{ $experience->company_name }}">
-                    </div>
+                    <div id="cloneExperience">
+                        <div class="group-item">
 
-                    <div class="mb-3">
-                        <label class="form-label">Designation</label>
-                        <input type="text" class="form-control" name="experience[role][]" value="{{ $experience->role }}">
-                    </div>
+                            <div class="mb-3">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" class="form-control" name="experience[company][]" value="{{ $experience->company_name }}">
+                            </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Start Date</label>
-                        <input type="date" class="form-control" name="experience[start_date][]" value="{{ $experience->start_date }}">
-                    </div>
+                            <div class="mb-3">
+                                <label class="form-label">Designation</label>
+                                <input type="text" class="form-control" name="experience[role][]" value="{{ $experience->role }}">
+                            </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">End Date</label>
-                        <input type="date" class="form-control" name="experience[end_date][]" value="{{ $experience->end_date }}">
+                            <div class="mb-3">
+                                <label class="form-label">Start Date</label>
+                                <input type="date" class="form-control" name="experience[start_date][]" value="{{ $experience->start_date }}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">End Date</label>
+                                <input type="date" class="form-control" name="experience[end_date][]" value="{{ $experience->end_date }}">
+                            </div>
+                            <div class="d-flex flex-row-reverse justify-content-between">
+                                <a href="#" title="Delete this Experience"><span class="delete"><i class="fa-solid fa-trash"></i></span></a>
+                                <a href="#" title="Add more Experience" onclick="cloneSection('cloneExperience')"><span class="add-more"><i class="fa-solid fa-plus"></i></span></a>
+                            </div>
+                            <hr>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row-reverse justify-content-between">
-                        <a href="#" title="Delete this Experience"><span class="delete"><i class="fa-solid fa-trash"></i></span></a>
-                        <a href="#" title="Add more Experience"><span class="add-more"><i class="fa-solid fa-plus"></i></span></a>
-                    </div>
-                    <hr>
                     @endforeach
 
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>
@@ -75,3 +80,14 @@
         </div>
     </div>
 </div>
+<!-- @ vite('resources/js/profileEditRemove.js') -->
+<script>
+    function cloneSection(containerId) {
+        const container = document.getElementById(containerId);
+        const firstGroup = container.querySelector('.group-item');
+        const clone = firstGroup.cloneNode(true);
+        // Clear all input, textarea, and select values
+        clone.querySelectorAll('input, textarea, select').forEach(input => input.value = '');
+        container.appendChild(clone);
+    }
+</script>
