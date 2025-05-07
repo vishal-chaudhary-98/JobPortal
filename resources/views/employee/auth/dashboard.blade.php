@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="//unpkg.com/alpinejs" defer></script>
+
 
     <title>Employee dashboard</title>
     @include('site.header.header')
@@ -24,7 +26,7 @@
         </div>
     </div>
     @vite(['resources/js/flashMessages'])
-    
+
 </body>
 
 </html>

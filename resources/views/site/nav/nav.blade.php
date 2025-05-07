@@ -72,12 +72,12 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
-                            <a href="{{  route('employee.view.profile') }} ">
+                            <a href="{{  route('employee.profile') }} ">
                             <p class=" text-center">{{ Auth::guard('web')->user()->name }}</p>
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('employee.dashboard') }}">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="{{ route('employee.personal.info') }}">Edit personal details</a></li>
+                        <li><a class="dropdown-item" href="{{ route('employee.usdate.profile.details') }}">Edit Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

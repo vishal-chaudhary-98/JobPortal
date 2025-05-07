@@ -90,7 +90,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="button" class="btn btn-success mt-2" onclick="cloneSection('education-container')">+ Add Another Certification</button>
+                <button type="button" class="btn btn-success mt-2" onclick="cloneSection('education-container')">+ Add Another Education</button>
               </div>
             </div>
             <!-- Certification Details  -->
@@ -187,7 +187,7 @@
                   </div>
                 </div>
                 <!-- Add Another Button -->
-                <button type="button" class="btn btn-success mt-2" onclick="cloneSection('experience-container')">+ Add Another Certification</button>
+                <button type="button" class="btn btn-success mt-2" onclick="cloneSection('experience-container')">+ Add Another Experience</button>
               </div>
             </div>
           </div>

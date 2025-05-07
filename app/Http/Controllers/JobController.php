@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\JobType;
+use App\Models\Employer;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -84,6 +85,15 @@ class JobController extends Controller
         return view('employee.auth.layout.sections.main_content', compact('jobs'));
     }
 
+    //View Single job post
+    public function jobPost($id) {
+        if(!Auth::guard('web')->user()) {
+            abort(403, 'Unauthorized');
+        }
+        $job = Job::findOrFail($id);
+        return view('employee.auth.layout.sections.view_job', compact('job'));
+    }
+
     public function yourJobs(Request $request)
     {
         $employer = auth('employer')->user();
@@ -97,12 +107,21 @@ class JobController extends Controller
         return view('employer.auth.dashboard', compact('jobs'));
     }
 
-    //View Single job post
-    public function singleJobPost(Request $request) {
-        $employer = auth('employer')->user();
-        if (!$employer) {
+    // Job application
+    public function applyJob($id) {
+        $employee = auth('web')->user();
+        if (!$employee) {
             abort(403, 'Unauthorezed');
         }
-        dd ($request);
+
+        $job = Job::findOrFail($id);
+        $employerId = $job->employer_id;
+        $employer = Employer::findOrFail($employerId);
+
+        return view('employee.auth.layout.sections.apply', compact(['job', 'employer']));
+
     }
+
+
+
 }

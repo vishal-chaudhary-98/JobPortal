@@ -56,7 +56,6 @@ class EmployeeController extends Controller
             return redirect()->route('employee.login')->withErrors(['email' => 'Email not found']);
         }
         if (!Hash::check($request->pswd, $user->password)) {
-
             return redirect()->route('employee.login')->withErrors(['pswd' => 'Password not match!']);
         }
         Auth::guard('web')->login($user);

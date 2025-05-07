@@ -233,3 +233,13 @@ body {
   max-width: 100%;
   width: 83%;
 } */
+
+.view-job {
+  text-decoration: none;
+  color: black;
+}
+
+.job-description {
+  font-size: 20px ;
+  line-height: 34px;
+}
