@@ -9,7 +9,7 @@ use App\Http\Controllers\PersonalDetailsController;
 Route::get('/', function () {
     return view('welcome');
 });
-//-----------------------------------------------------------------------------
+//---------------------------   EMPLOYEE   --------------------------------------------------
 Route::view('/employee/login','employee.index')->name('employee.login');
 Route::view('/employee/registration','employee.registration')->name('employee.register');
 Route::post('/employee/register/post/data',[EmployeeController::class,'index'])->name('employee.registeration');
@@ -54,7 +54,7 @@ Route::get('/employee/apply/job/{id}',[JobController::class, 'applyJob'])->name(
 
 
 
-//------------------------------------------------------------------------------
+//----------------------------------    EMPLOYER    --------------------------------------------
 Route::view('/employer/login','employer.index')->name('employer.login');
 Route::view('/employer/registration','employer.registration')->name('employer.register');
 Route::post('/employer/register/post/data',[EmployerController::class,'index'])->name('employer.registration');
@@ -75,3 +75,7 @@ Route::get('/employer/single/post',[JobController::class,'singleJobPost'])->name
 //----------------------------------------------------------------------------
 Route::view('/test','test')->name('test')->middleware('auth:web');
 Route::view('/test','test')->name('test')->middleware('auth:employer');
+
+
+//--------------------------    ADMIN   ---------------------------------------------------
+

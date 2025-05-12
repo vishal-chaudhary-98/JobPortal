@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\JobType;
 use App\Models\Employer;
+use App\Models\Certification;
+use App\Models\Education;
+use App\Models\Experience;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -117,8 +120,12 @@ class JobController extends Controller
         $job = Job::findOrFail($id);
         $employerId = $job->employer_id;
         $employer = Employer::findOrFail($employerId);
+        $employeeId = $employee->id;
+        $educations = Education::where('employee_id', $employeeId)->get();
+        $certification = Certification::where('employee_id', $employeeId)->get();
+        $experiences = Experience::where('employee_id', $employeeId)->get();
 
-        return view('employee.auth.layout.sections.apply', compact(['job', 'employer']));
+        return view('employee.auth.layout.sections.apply', compact(['job', 'employer', 'educations', 'certification', 'experiences', 'employeeId']));
 
     }
 
