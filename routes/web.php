@@ -1,15 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployerController;
-use App\Http\Controllers\JobController;
 use App\Http\Controllers\PersonalDetailsController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-//-----------------------------------------------------------------------------
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[WelcomeController::class,'index']);
+//---------------------------   EMPLOYEE   --------------------------------------------------
 Route::view('/employee/login','employee.index')->name('employee.login');
 Route::view('/employee/registration','employee.registration')->name('employee.register');
 Route::post('/employee/register/post/data',[EmployeeController::class,'index'])->name('employee.registeration');
@@ -54,7 +57,7 @@ Route::get('/employee/apply/job/{id}',[JobController::class, 'applyJob'])->name(
 
 
 
-//------------------------------------------------------------------------------
+//----------------------------------    EMPLOYER    --------------------------------------------
 Route::view('/employer/login','employer.index')->name('employer.login');
 Route::view('/employer/registration','employer.registration')->name('employer.register');
 Route::post('/employer/register/post/data',[EmployerController::class,'index'])->name('employer.registration');
@@ -75,3 +78,8 @@ Route::get('/employer/single/post',[JobController::class,'singleJobPost'])->name
 //----------------------------------------------------------------------------
 Route::view('/test','test')->name('test')->middleware('auth:web');
 Route::view('/test','test')->name('test')->middleware('auth:employer');
+
+
+//--------------------------    ADMIN   ---------------------------------------------------
+
+Route::view('/admin/dashboard','admin.index');
