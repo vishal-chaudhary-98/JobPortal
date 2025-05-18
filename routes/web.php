@@ -1,14 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployerController;
-use App\Http\Controllers\JobController;
 use App\Http\Controllers\PersonalDetailsController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[WelcomeController::class,'index']);
 //---------------------------   EMPLOYEE   --------------------------------------------------
 Route::view('/employee/login','employee.index')->name('employee.login');
 Route::view('/employee/registration','employee.registration')->name('employee.register');
@@ -79,3 +82,4 @@ Route::view('/test','test')->name('test')->middleware('auth:employer');
 
 //--------------------------    ADMIN   ---------------------------------------------------
 
+Route::view('/admin/dashboard','admin.index');
