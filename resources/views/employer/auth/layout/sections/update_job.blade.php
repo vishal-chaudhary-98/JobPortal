@@ -17,8 +17,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="job_type" class="form-label">Job Type</label>
                         <select name="job_type" id="job_type" class="form-select">
-                            <option value="">Select a job type</option>
-                            @foreach($jobType as $jobType)
+                            @foreach($jobTypes as $jobType)
                             <option value="{{ $jobType->job_type }}" {{ old('job_type') == $jobType->job_type ? 'selected' : '' }}>
                                 {{ $jobType->job_type }}
                             </option>

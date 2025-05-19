@@ -1,4 +1,5 @@
 <!-- Left Sidebar -->
+ @auth('web')
 <div class="left-sidebar left-nav-employee position-fixed">
     <ul class="nav flex-column">
         <li class="nav-item">
@@ -32,3 +33,4 @@
         </li>
     </ul>
 </div>
+@endauth

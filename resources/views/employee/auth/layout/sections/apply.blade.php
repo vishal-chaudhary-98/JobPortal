@@ -76,7 +76,7 @@
                 <div class="d-flex">
                     <div class="col-sm-6">
                         <div class="degree">
-                            <p>Choose your late Qualification</p>
+                            <p>Choose your highest Qualification</p>
                             <select name="education" class="form-select">
                                 <option selected>Select education</option>
                                 @foreach($educations as $education)
@@ -109,19 +109,6 @@
                 <div class="d-flex">
                     <div class="col-sm-6">
                         <div class="company">
-                            <p>Choose your late Experience</p>
-                            <select name="experience" class="form-select">
-                                <option selected>Select company</option>
-                                @foreach($experiences as $experience)
-                                @if ($employeeId == $experience->employee_id )
-                                <option value="{{ $experience->company_name }}">{{ $experience->company_name }}</option>
-                                @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="role">
                             <p>Choose your role</p>
                             <select name="designation" class="form-select">
                                 <option selected>Select designation</option>
@@ -133,6 +120,21 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-sm-6">
+                        <div class="role">
+
+                            <p>Choose your latest Experience</p>
+                            <select name="experience" class="form-select">
+                                <option selected>Select company</option>
+                                @foreach($experiences as $experience)
+                                @if ($employeeId == $experience->employee_id )
+                                <option value="{{ $experience->company_name }}">{{ $experience->company_name }}</option>
+                                @endif
+                                @endforeach
+                            </select>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -142,7 +144,7 @@
                 <div class="col-sm-12">
                     <div class="list-dates">
                         <p>Cover letter</p>
-                        <textarea name="cover_letter" class="form-control" ></textarea>
+                        <textarea name="cover_letter" class="form-control"></textarea>
                     </div>
                 </div>
             </div>

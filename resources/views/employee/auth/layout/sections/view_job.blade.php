@@ -8,7 +8,9 @@
         </div>
         <hr>
         <div class="job-description m-5">
-            {{ $job->description }}
+        {!! nl2br(e($job->description)) !!}
+
+            <!-- { { $job->description }} -->
         </div>
         <hr>
         <div class="jod-details mb-5">

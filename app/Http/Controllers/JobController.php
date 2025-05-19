@@ -43,8 +43,8 @@ class JobController extends Controller
 
     public function updateForm($id) {
         $field = Job::findOrFail($id);
-        $jobType = JobType::all();
-        return view('employer.auth.layout.sections.update_job', compact(['field','jobType']));
+        $jobTypes = JobType::all();
+        return view('employer.auth.layout.sections.update_job', compact(['field','jobTypes']));
     }
 
     public function update(Request $request, $id) {
@@ -55,8 +55,11 @@ class JobController extends Controller
             'salary' => 'nullable|numeric',
             'job_type' => 'required',
         ]);
+        $employer = auth('employer')->user();
         $update = Job::findOrFail($id);
-
+        if ($update->employer_id != $employer->id) {
+            return redirect()->route('employer.dashboard')->withErrors(['error' => 'You don\'t have authority to update this job post!']);
+        }
         $update->title = $request->title;
         $update->location = $request->location;
         $update->description = $request->description;
@@ -65,7 +68,8 @@ class JobController extends Controller
 
         // Save the updated job
         $update->save();
-        return view('employer.auth.dashboard')->with('success','Post updated sucessfully!');
+        // return view('employer.auth.dashboard')->with('success','Post updated sucessfully!');
+        return redirect()->route('employer.dashboard')->with('success','Post updated sucessfully!');
     }
 
     public function showJobs(Request $request)
@@ -90,11 +94,14 @@ class JobController extends Controller
 
     //View Single job post
     public function jobPost($id) {
-        if(!Auth::guard('web')->user()) {
-            abort(403, 'Unauthorized');
+        if(Auth::guard('web')->user()) {
+            $job = Job::findOrFail($id);
+            return view('employee.auth.layout.sections.view_job', compact('job'));
         }
-        $job = Job::findOrFail($id);
-        return view('employee.auth.layout.sections.view_job', compact('job'));
+        if (Auth::guard('employer')->user()) {
+            $job = Job::findOrFail($id);
+            return view('employer.auth.layout.sections.view_job',compact('job'));
+        }
     }
 
     public function yourJobs(Request $request)
@@ -115,6 +122,7 @@ class JobController extends Controller
         $employee = auth('web')->user();
         if (!$employee) {
             abort(403, 'Unauthorezed');
+            // return redirect()->route('employee.login');
         }
 
         $job = Job::findOrFail($id);

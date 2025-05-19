@@ -107,7 +107,7 @@
         <div class="row">
           @foreach($jobs as $job)
           <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-            <a href="#" class="text-decoration-none">
+            <a href="{{ route('employee.view.job', ['id'=>$job->id]) }}" class="text-decoration-none">
               <div class=" card h-100">
                 <!-- <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
                 <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
@@ -118,7 +118,7 @@
                 <div class="card-body d-flex flex-column">
                   <h5 class="card-title text-start">{{ $job->title }}</h5>
                   <p class="card-text text-start">
-                    {{ \Illuminate\Support\Str::words($job->description, 10, '...') }}
+                    {{ \Illuminate\Support\Str::words($job->description, 15, '...') }}
                   </p>
                   <div class="mt-auto">
                     <div class="location bg-secondary bg-opacity-10 py-1">
